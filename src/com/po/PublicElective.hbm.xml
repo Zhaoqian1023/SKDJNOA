@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="PublicElective" table="t_publicelective">
+		<id name="pid" column="pid">
+			<generator class="native"></generator>
+		</id>
+		<property name="year" column="year" not-null="false"></property>
+		<many-to-one name="students" column="sid" class="Student"></many-to-one>
+		<many-to-one name="publiccourses" column="pcid" class="PublicCourse"></many-to-one>
+
+	</class>
+	
+</hibernate-mapping>

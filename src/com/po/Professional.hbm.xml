@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="Professional" table="t_professional">
+		<id name="pid" column="pid">
+		</id>
+		<property name="pname" column="pname" not-null="true"></property>
+		<many-to-one name="colleage" column="cid" class="Colleage"></many-to-one>
+
+	</class>
+	
+</hibernate-mapping>

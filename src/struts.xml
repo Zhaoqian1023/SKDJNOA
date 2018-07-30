@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<!-- 使用阶段 -->
+	<constant name="struts.devMode" value="false" />
+	
+	<!-- 开发阶段 -->
+	<!-- <constant name="struts.devMode" value="true" /> -->
+	
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<constant name="struts.action.extension" value="action,do,"></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.action.excludePattern" value="/admin/css/.*,/admin_US/css/.*,/admin/fonts/.*,/admin_US/fonts/.*,/admin/assets/.*,/admin_US/assets/.*,/admin/images/.*,/admin_US/images/.*,/admin/js/.*,/admin_US/js/.*,/admin/img/.*,/admin_US/img/.*,/manager/css/.*,/manager/fonts/.*,/manager/assets/.*,/manager/images/.*,/manager/js/.*,/manager/img/.*,/student/css/.*,/student/fonts/.*,/student/img/.*,/student/js/.*" />
+	<constant name="struts.ui.templateSuffix" value="java" />
+	<constant name="struts.ui.theme" value="simple" />
+	
+	 <!--该属性指定XSLT Result是否使用样式表缓存.当应用处于开发阶段时,该属性通常被设置为true;当应用处于产品使用阶段时,该属性通常被设置为false.-->  
+ 	<!-- 开发阶段 -->
+ 	<!-- <constant name="struts.xslt.nocache" value="true" /> --> 
+ 	
+ 	<!-- 使用阶段 --> 
+ 	<constant name="struts.xslt.nocache" value="false" />  
+ 	
+ 	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+ 	<!-- 开发阶段 -->
+ 	<!-- <constant name="struts.serve.static.browserCache" value="false" />   
+	<constant name="struts.freemarker.templatesCache" value="false"/>  -->  
+    
+    <!-- 使用阶段 -->
+    <constant name="struts.serve.static.browserCache" value="true" />   
+	<constant name="struts.freemarker.templatesCache" value="true"/>
+	
+	
+	<constant name="struts.multipart.maxSize" value="1000000000"/>
+	<!-- <constant name="struts.multipart.saveDir" value="/manager/upload"></constant> --> 
+	
+	<package name="default" namespace="/" extends="struts-default">
+		<default-interceptor-ref name="basicStack" />  
+		<default-action-ref name="notFound" />
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>  
+			<exception-mapping exception="java.sql.SQLException" result="error"/>  
+			<exception-mapping exception="java.lang.Exception" result="error"/> 
+		</global-exception-mappings>
+
+
+		<action name="*_*" class="com.action.{1}Action" method="{2}">
+			<result name="judgeSuccess" type="redirect">admin/${page}.jsp  </result>
+			<result name="printError" type="redirect">admin/${page}.jsp </result>
+			<result name="printSuccess" type="dispatcher">${nextPage}.jsp </result>
+			<result name="printkccSuccess" type="dispatcher">${nextPage}.jsp </result>
+			<result name="BTSuccess" type="dispatcher">${nextPage}.jsp </result>
+			<result name="Success">transfer/${page}success.jsp</result>
+			<result name="Error">transfer/${page}error.jsp</result>
+			<result name="SaveFunction">transfer/${page}.jsp</result>
+			<result name="Fail">transfer/scoreinputfail.jsp</result>
+			<result name="inputerror">transfer/${nextPage}.jsp</result>
+			<result name="queryCourseByTeacher" type="dispatcher">${page}.jsp</result>
+			<result name="queryPublicCourse" type="dispatcher">${page}.jsp</result>
+			<result name="queryinfo" type="dispatcher">${page}.jsp</result>
+			
+			<result name="judgeManagerSuccess" type="redirect">manager/${page}.jsp
+			</result>
+			<result name="ManagerSuccess">transfer/${page}success.jsp
+			</result>
+			<result name="deleteFail">transfer/${page}fail.jsp</result>
+			<result name="deleteSuccess">transfer/${page}success.jsp
+			</result>
+			<result name="deleteError" type="redirect">manager/${page}.jsp</result>
+			<result name="initSuccess" type="dispatcher">${page}.jsp</result>
+			<result name="findstudentsuccess">studentupdate_manager.jsp
+			</result>
+			<result name="updatestudent">studentfind_manager.jsp</result>
+			<result name="updateteacher">teacherfind_manager.jsp</result>
+			<result name="updatescore">scorefind_manager.jsp</result>
+			<result name="updatecourse">coursefind_manager.jsp</result>
+			<result name="updateselectcourse">selectcoursefind_manager.jsp</result>
+			<result name="updatepubliccourse">publiccoursefind_manager.jsp</result>
+			<result name="findscoresuccess">scoreupdate_manager.jsp</result>
+			<result name="findteachersuccess">teacherupdate_manager.jsp</result>
+			<result name="findcoursesuccess">courseupdate_manager.jsp</result>
+			<result name="findselectcoursesuccess" type="dispatcher">selectcourseupdate_manager.jsp</result>
+			<result name="findselectcoursetodeletesuccess" type="dispatcher">selectcoursedelete_manager.jsp</result>
+			<result name="findselectcoursetoexportsuccess" type="dispatcher">selectstudentexport_manager.jsp</result>
+			<result name="findpubliccoursesuccess" type="dispatcher">publiccourseupdate_manager.jsp</result>
+			<result name="adduser">transfer/adduser.jsp</result>
+			
+		</action>
+		
+		<action name="uploads" class="com.action.FileUploadAction">
+
+            <!-- 指定（限制）上传文件的类型，定义局部拦截器，修改默认拦截器的属性 
+                "fileUpload.maximumSize" ：限制上传最大的文件大小。 
+                "fileUpload.allowedTypes"：允许上传文件的类型。 
+                "fileUpload.allowedExtensions"：允许上传文件的可扩展文件类型。 -->
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.maximumSize">500000000</param>
+                <param name="fileUpload.allowedTypes">application/vnd.ms-excel</param>
+                <param name="fileUpload.allowedExtensions">.xls,.xlsx</param>
+            </interceptor-ref>
+
+            <result name="success">transfer/success.jsp</result>
+            <result name="error">error.jsp</result>
+            <!-- 出现错误自动会返回input结果，进入结果视图 -->
+        </action>
+        <action name="selectuploads" class="com.action.SelectFileUploadAction">
+
+            <!-- 指定（限制）上传文件的类型，定义局部拦截器，修改默认拦截器的属性 
+                "fileUpload.maximumSize" ：限制上传最大的文件大小。 
+                "fileUpload.allowedTypes"：允许上传文件的类型。 
+                "fileUpload.allowedExtensions"：允许上传文件的可扩展文件类型。 -->
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.maximumSize">500000000</param>
+                <param name="fileUpload.allowedTypes">application/vnd.ms-excel</param>
+                <param name="fileUpload.allowedExtensions">.xls,.xlsx</param>
+            </interceptor-ref>
+
+            <result name="success">transfer/success.jsp</result>
+            <result name="error">error.jsp</result>
+            <!-- 出现错误自动会返回input结果，进入结果视图 -->
+        </action>
+        <action name="electivestudentuploads" class="com.action.ElectiveFileUploadAction">
+
+            <!-- 指定（限制）上传文件的类型，定义局部拦截器，修改默认拦截器的属性 
+                "fileUpload.maximumSize" ：限制上传最大的文件大小。 
+                "fileUpload.allowedTypes"：允许上传文件的类型。 
+                "fileUpload.allowedExtensions"：允许上传文件的可扩展文件类型。 -->
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.maximumSize">500000000</param>
+                <param name="fileUpload.allowedTypes">application/vnd.ms-excel</param>
+                <param name="fileUpload.allowedExtensions">.xls,.xlsx</param>
+            </interceptor-ref>
+
+            <result name="success">transfer/success.jsp</result>
+            <result name="error">error.jsp</result>
+            <!-- 出现错误自动会返回input结果，进入结果视图 -->
+        </action>
+
+		<action name="notFound">
+			<result name="success" type="redirect">
+				<param name="location">error.jsp</param>
+			</result>
+		</action>
+		
+	</package>
+
+</struts>

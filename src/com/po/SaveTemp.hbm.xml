@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="SaveTemp" table="t_savetemp">
+		<id name="stId" column="stid">
+			<generator class="native"></generator>
+		</id>
+		<property name="className" column="classname" ></property>
+		<property name="classId" column="classid" ></property>
+		<property name="years" column="years" ></property>
+		<property name="courseName" column="coursename" ></property>
+		<property name="studentId" column="studentid" ></property>
+		<property name="studentName" column="studentname" ></property>
+		<property name="ordinaryScore" column="ordinaryscore" ></property>
+		<property name="paperScore" column="paperscore" ></property>
+		<property name="remark" column="remark" ></property>
+		<property name="ordinaryProportion" column="ordinaryproportion" ></property>
+		<property name="paperProportion" column="paperproportion" ></property>
+		<property name="credit" column="credit" ></property>
+		<property name="courseCategory" column="coursecategory" ></property>
+		<property name="flag" column="flag" ></property>
+		<property name="finalScore" column="finalscore" ></property>
+		<property name="courseId" column="courseid" ></property>
+		<property name="examFlag" column="examflag" ></property>
+	</class>
+	
+</hibernate-mapping>

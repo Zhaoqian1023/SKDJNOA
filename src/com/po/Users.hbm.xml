@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="Users" table="t_users">
+		<id name="uid" column="uid"></id>
+		<property name="uname" column="uname" not-null="true"></property>
+		<property name="passWord" column="password" not-null="true"></property>
+
+	</class>
+	
+</hibernate-mapping>

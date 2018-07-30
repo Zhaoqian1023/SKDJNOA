@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="Course" table="t_course">
+		<id name="cid" column="cid">
+			<generator class="native"></generator>
+		</id>
+		<property name="cname" column="cname" not-null="true"></property>
+		<property name="category" column="category" not-null="false"></property>
+		<property name="credits" column="credits" not-null="false"></property>
+		<property name="time" column="time" not-null="false"></property>
+		<property name="year" column="year" not-null="false"></property>
+		<property name="beginTime" column="beginTime" not-null="false"></property>
+		<property name="endTime" column="endTime" not-null="false"></property>
+		<property name="examFlag" column="examFlag" not-null="false"></property>
+		<property name="courseNum" column="courseNum" not-null="false"></property>
+		<many-to-one name="teachers" lazy="false" fetch="join" column="tid" class="Teacher"></many-to-one>
+		<set name="classNames" table="t_courseclass" >
+			<key column="cid"/>
+			<many-to-many column="classid" class="ClassName"/>
+		</set>
+
+	</class>
+	
+</hibernate-mapping>

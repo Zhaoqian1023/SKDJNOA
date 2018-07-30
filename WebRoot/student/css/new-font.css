@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'xingkai';
+    src: url('/fonts/xingkai-webfont.ttf') format('truetype'),
+    url('/fonts/xingkai-webfont.woff2') format('woff2'),
+    url('/fonts/xingkai-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+    font-family: 'kaiti';
+    src: url('/fonts/kaiti-webfont.ttf') format('truetype'),
+    url('/fonts/kaiti-webfont.woff2') format('woff2'),
+    url('/fonts/kaiti-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

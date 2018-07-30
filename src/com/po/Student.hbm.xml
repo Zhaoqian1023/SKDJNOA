@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="Student" table="t_student">
+		<id name="sid" column="sid">
+		</id>
+		<property name="sname" column="sname" not-null="true"></property>
+		<property name="englishname" column="englishname" not-null="true"></property>
+		<property name="sex" column="sex" not-null="false"></property>
+		<property name="number" column="number" not-null="false"></property>
+		<property name="political" column="political" not-null="false"></property>
+		<property name="national" column="national" not-null="false"></property>
+		<property name="amissionTime" column="amissionTime" not-null="false"></property>
+		<property name="graduationTime" column="graduationTime" not-null="false"></property>
+		<many-to-one name="className"  lazy="false" fetch="join" column="classnameid" class="ClassName"></many-to-one>
+		<many-to-one name="professions"  lazy="false" fetch="join" column="professionsid" class="Professional"></many-to-one>
+		<many-to-one name="colleages"  lazy="false" fetch="join" column="colleagesid" class="Colleage"></many-to-one>
+		
+		<property name="note" column="note" not-null="false"></property>
+		<property name="status" column="status" not-null="false"></property>
+		<property name="password" column="password" not-null="false"></property>
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="Teacher" table="t_teacher">
+	    <id name="tid" column="tid"></id>
+		<property name="tname" column="tname" not-null="false"></property>
+		<property name="position" column="position" not-null="false"></property>
+		<property name="title" column="title" not-null="false"></property>
+		<many-to-one name="dept" lazy="false" fetch="join" column="did" class="Department"></many-to-one>
+	</class>
+	
+</hibernate-mapping>

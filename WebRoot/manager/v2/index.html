@@ -1,0 +1,398 @@
+﻿<!doctype html>
+<html lang="zh">
+<head>
+<link rel="stylesheet" type="text/css" href="datedropper.css">
+<link rel="stylesheet" type="text/css" href="timedropper.min.css">
+<style type="text/css">
+
+.input{padding:6px;border:1px solid #d3d3d3}
+</style>
+      <script>  
+            function st(){  
+              
+                var sheng=document.getElementById('sheng');  
+                //存省的数组，可自行添加 
+                var shengs=new Array(new Option("系",''),new Option("电气信息系","hn"),new Option("财经系","gd"));  
+                for(var i=0;i<shengs.length;i++){  
+                    sheng.options[i]=shengs[i];  
+                }  
+            }  
+            //存市的数组，根据省的数组添加  
+            var shis=new Array();  
+            shis[0]=new Array(new Option("专业",''));  
+            shis[1]=new Array(new Option("计算机科学与技术",'cs'),new Option("电气工程及其自动化",'ld'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'));  
+            shis[2]=new Array(new Option("国际贸易",'gz'),new Option("会计",'sz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'),new Option("其他",'yz'));  
+            function change(obj){  
+                var shi=document.getElementById('shi');  
+                shi.options.length=0;  
+                var index=sheng.selectedIndex;  
+                for(var x in shis[index]){  
+                    shi.options[x]=shis[index][x]  
+                }  
+            }  
+        </script>  
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet prefetch" href="https://cdn.jsdelivr.net/foundation/5.5.0/css/foundation.css">
+	<!--<link rel="stylesheet prefetch" href="http://fonts.useso.com/css?family=Roboto:300,400">-->
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<!--[if IE]>
+		<script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+        <script src="yui-min.js"></script>
+<script>
+YUI({
+    modules: {
+        'trip-calendar': {
+            fullpath: 'trip-calendar.js',
+            type    : 'js',
+            requires: ['trip-calendar-css']
+        },
+        'trip-calendar-css': {
+            fullpath: 'trip-calendar.css',
+            type    : 'css'
+        }
+    }
+}).use('trip-calendar', function(Y) {
+    
+    var oCal = new Y.TripCalendar({
+        minDate         : new Date,     //最小时间限制
+        triggerNode     : '#J_DepDate', //第一个触节点
+        finalTriggerNode: '#J_EndDate'  //最后一个触发节点
+    });
+    
+    //校验
+    Y.one('#J_Search').on('submit', function(e) {
+        e.halt();
+        var rDate    = /^((19|2[01])\d{2})-(0?[1-9]|1[012])-(0?[1-9]|[12]\d|3[01])$/;
+            oDepDate = Y.one('#J_DepDate'),
+            oEndDate = Y.one('#J_EndDate'),
+            sDepDate = oDepDate.get('value'),
+            sEndDate = oEndDate.get('value'), 
+            aMessage = ['请选择出发日期', '请选择返程日期', '返程时间不能早于出发时间，请重新选择', '日期格式错误'],
+            iError   = -1;   
+            switch(!0) {
+                case !sDepDate:
+                    oDepDate.focus();
+                    iError = 0;
+                    break;
+                case !rDate.test(sDepDate):
+                    oDepDate.focus();
+                    iError = 3;
+                    break;
+                case !sEndDate:
+                    oEndDate.focus();
+                    iError = 1;
+                    break;
+                case !rDate.test(sEndDate):
+                    oEndDate.focus();
+                    iError = 3;
+                    break;
+                case sDepDate.replace(/-/g, '') > sEndDate.replace(/-/g, ''):
+                    oEndDate.focus();
+                    iError = 2;
+                    break;
+            };
+            if(iError > -1) {
+                this.set('message', aMessage[iError]).showMessage();                
+            }
+            else {
+                alert('开始时间：' + sDepDate + '\n返程时间：' + sEndDate);
+            }
+    }, oCal);
+});
+</script>
+</head>
+<body  onload="st()">
+	<header class="m-main-header"></header>
+	<div class="row">
+		<div class="small-12 small-centered medium-8 columns">
+			<div class="panel m-panel shadow">
+				<div class="row collapse">
+					<div class="small-12 columns">
+						<header class="form-header">
+						<h2>个人信息 <small>修改</small></h2>
+						</header>
+					</div>
+				</div>
+				<div class="row">
+				<div class="small-12 columns">
+				<form>
+					<div class="row">
+						<div class="small-4 columns">
+						<p class="notice">学号</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+							<label class="material-label" for="name">201403204118</label>
+							<input class="material-field" id="name" required="required" type="text" />
+							</div>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="small-4 columns">
+						<p class="notice">姓名</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+							<label class="material-label" for="name">刘文</label>
+							<input class="material-field" id="name" required="required" type="text" />
+							</div>
+						</div>
+					</div>
+                      <div class="row">
+						<div class="small-4 columns">
+						<p class="notice">英文名</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+							<label class="material-label" for="name">MRSDVHB</label>
+							<input class="material-field" id="name" required="required" type="text" />
+							</div>
+						</div>
+					</div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+ <div class="row">
+						<div class="small-4 columns">
+						<p class="notice">学年</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+
+
+<div id="main">
+
+	<div class="demo">
+		<p>开始日期：<input type="text" class="input" id="pickdate" /></p>
+	</div>
+   
+	
+</div>
+<div id="main">
+
+	<div class="demo">
+		<p>结束日期：<input type="text" class="input" id="pickdate2" /></p>
+	</div>
+   
+	
+</div>
+
+<script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+<script src="datedropper.min.js"></script>
+
+<script>
+$("#pickdate").dateDropper({
+	animate: false,
+	format: 'Y-m-d',
+	maxYear: '2020'
+});
+$("#pickdate2").dateDropper({
+	animate: false,
+	format: 'Y-m-d',
+	maxYear: '2020'
+});
+$("#picktime").timeDropper({
+	meridians: false,
+	format: 'HH:mm',
+});
+</script>
+
+               
+                    
+                    
+         </div>
+						</div>
+					</div>           
+                    
+                    
+                    
+                    
+                      <div class="row">
+						<div class="small-4 columns">
+						<p class="notice">性别</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+						
+<select name="" > 	
+<option value="0">女</option> 
+<option value="1">男</option> 
+</select> 
+
+						  </div>
+						</div>
+					</div>
+                    
+                    
+                    
+                      <div class="row">
+						<div class="small-4 columns">
+						<p class="notice">民族</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+							<select name="" > 	
+<option value="0">汉</option> 
+<option value="1">维吾尔族</option> 
+<option value="1">回族</option> 
+
+</select> 
+							</div>
+						</div>
+					</div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                       <div class="row">
+						<div class="small-4 columns">
+						<p class="notice">身份证号</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+							<label class="material-label" for="name">371485215521552</label>
+							<input class="material-field" id="name" required="required" type="text" />
+							</div>
+						</div>
+					</div>
+                     <div class="row">
+						<div class="small-4 columns">
+						<p class="notice">政治面貌</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+							<select name="" > 	
+<option value="0">共青团员</option> 
+<option value="1">党员</option> 
+<option value="1">无</option> 
+</select> 
+
+        </div>  
+							</div>
+						</div>
+					</div>
+                       <div class="row">
+						<div class="small-4 columns">
+						<p class="notice">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;班级</p>
+						</div>
+						<div class="small-8 columns">
+							<div class="form-group-material">
+							<div class='yemian' >  
+            
+            <select class='s' id='sheng' onchange='change(this)'>  
+                <option value=''>系</option>  
+            </select>  
+            <select class='s' id='shi'>  
+                <option value=''>专业</option>  
+            </select>  
+            <select name="" > 	
+<option value="0">班级</option> 
+<option value="1">14级1班</option> 
+<option value="1">14级2班</option> 
+<option value="1">14级1班</option> 
+<option value="1">14级2班</option> 
+<option value="1">14级1班</option> 
+<option value="1">14级2班</option> 
+<option value="1">14级1班</option> 
+<option value="1">14级2班</option> 
+<option value="1">14级1班</option> 
+<option value="1">14级2班</option> 
+</select> 
+							</div>
+						</div>
+					</div>
+                     
+                     
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+					
+					
+					<div class="row">
+						<div class="small-4 columns">
+							<p class="notice">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注 </p>
+						</div>
+						<div class="small-8 columns">
+							<div class="row">
+								<div class="small-8 columns">
+									<div class="form-group-material">
+										<label class="material-label" for="city">4546</label>
+										<input class="material-field" id="city" type="text" />
+									</div>
+								</div>
+								<div class="small-4 columns">
+									<div class="form-group-material">
+										
+										<select name="" > 	
+<option value="0">在校</option> 
+<option value="1">不在校</option> 
+</select> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="small-12 small-push-4 columns">
+							<button>确认修改</button>
+						</div>
+					</div>
+				</form></div></div></div></div></div>
+	
+	
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+	<script>
+	(function () {
+	    var materialForm;
+	    materialForm = function () {
+	        return $('.material-field').focus(function () {
+	            return $(this).closest('.form-group-material').addClass('focused has-value');
+	        }).focusout(function () {
+	            return $(this).closest('.form-group-material').removeClass('focused');
+	        }).blur(function () {
+	            if (!this.value) {
+	                $(this).closest('.form-group-material').removeClass('has-value');
+	            }
+	            return $(this).closest('.form-group-material').removeClass('focused');
+	        });
+	    };
+	    $(function () {
+	        return materialForm();
+	    });
+	}.call(this));
+	</script>
+</body>
+</html>

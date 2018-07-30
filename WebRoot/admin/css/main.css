@@ -1,0 +1,3 @@
+.infoOne::before {
+    content: "注：";
+}

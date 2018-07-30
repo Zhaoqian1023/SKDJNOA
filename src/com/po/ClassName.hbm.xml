@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="ClassName" table="t_classname">
+		<id name="cid" column="cid">
+			<generator class="native"></generator>
+		</id>
+		<property name="cname" column="cname" not-null="false"></property>
+		<property name="englishname" column="englishname" not-null="false"></property>
+		<many-to-one name="professions" column="pid" class="Professional" ></many-to-one>
+		<set name="courses" inverse="true" table="t_courseclass">
+			<key column="classid"/>
+			<many-to-many column="cid"
+			class="Course"/>
+		</set>
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="ScoreManagement" table="t_scoremanagement">
+		<id name="smid" column="smid">
+			<generator class="native"></generator>
+		</id>
+		<property name="studentId" column="studentId" not-null="true"></property>
+		<property name="studentName" column="studentName" not-null="false"></property>
+		<property name="classId" column="classId" not-null="false"></property>
+		<property name="className" column="className" not-null="false"></property>
+		<property name="year" column="year" not-null="false"></property>
+		<property name="category" column="category"  not-null="false"></property>
+		<property name="course" column="coursename" not-null="false"></property>
+		<property name="courseId" column="courseId" not-null="false"></property>
+		<property name="credits" column="credits" not-null="false"></property>
+		<property name="paperProportion" column="paperProportion" not-null="false"></property>
+		<property name="ordinaryProportion" column="ordinaryProportion" not-null="false"></property>
+		<property name="paperGrade" column="paperGrade" not-null="false"></property>
+		<property name="ordinaryGrade" column="ordinaryGrade" not-null="false"></property>
+		<property name="beizhu" column="beizhu" not-null="false"></property>
+		<property name="finalGrade" column="finalGrade" not-null="false"></property>
+		<property name="resetGrade1" column="resetGrade1" not-null="false"></property>
+		<property name="resetGrade2" column="resetGrade2" not-null="false"></property>
+		<property name="resetGrade3" column="resetGrade3" not-null="false"></property>
+		<property name="examFlag" column="examFlag" not-null="false"></property>
+		<property name="teacherName" column="teacherName" not-null="false"></property>
+	</class>
+	
+</hibernate-mapping>
