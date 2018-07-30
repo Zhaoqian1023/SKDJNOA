@@ -1,0 +1,26 @@
+# Python:
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info
+dist
+build
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+# My configurations:
+db.ini
+deploy_key_rsa
+# Java
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
