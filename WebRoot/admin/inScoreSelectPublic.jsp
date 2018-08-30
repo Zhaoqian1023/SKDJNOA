@@ -76,8 +76,8 @@
                        <tr>
                        	<td width="60%" align="center" style="font-size: 20px">${att.getPname() }</td>
                     	<td width="40%" align="center">
-	                    	<a href="Print_printGXAsInput?page=gxscoreinput&year=2017-2018/2&status=在校&fangshi=百分制&kcdm=${att.getPid() }"><input type="submit" value='百分制录入' ></a>&nbsp;&nbsp;&nbsp;
-	                    	<a href="Print_printGXAsInput?page=gxscorekccinput&year=2017-2018/2&status=在校&fangshi=五级记分制&kcdm=${att.getPid() }"><input type="submit" value='五级记分制录入' ></a>	                    	
+	                    	<a href="Print_printGXAsInput?page=gxscoreinput&year=2018-2019/1&status=在校&fangshi=百分制&kcdm=${att.getPid() }"><input type="submit" value='百分制录入' ></a>&nbsp;&nbsp;&nbsp;
+	                    	<a href="Print_printGXAsInput?page=gxscorekccinput&year=2018-2019/1&status=在校&fangshi=五级记分制&kcdm=${att.getPid() }"><input type="submit" value='五级记分制录入' ></a>	                    	
 						</td>
                        </tr>
                         <tr><td><br></td></tr>

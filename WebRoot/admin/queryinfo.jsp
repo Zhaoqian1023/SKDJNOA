@@ -37,7 +37,7 @@
 		$("#attendance").attr("class", "active");
 	}
 </script>
-<script src="js/geo2.js"></script>
+<script src="js/geo.js"></script>
 </head>
 
 <body onload="active(),setup()">

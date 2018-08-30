@@ -51,7 +51,7 @@
                 <header class="panel-heading">
                  <i class="fa fa-hand-o-down"> </i> <span
 							class="label label-primary" style="font-size:medium">
-							请选择需要录入成绩的班级及课程 </span>
+							请选择需要打印成绩的班级及课程 </span>
                 </header>
                     <br>
                     &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; 
