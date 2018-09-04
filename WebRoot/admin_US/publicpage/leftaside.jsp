@@ -28,7 +28,7 @@
 						Enter Scores </span></a>
 
 				<ul class="sub">
-					<li><a href="Course_byTeacher?page=inScoreSelectOrdinary&years=2018-2019/1">Enter Scores</a></li>
+					<li><a href="Course_byTeacher?page=inScoreSelectOrdinary&years=2017-2018/2">Enter Scores</a></li>
 					<!-- <li><a href="#">补考成绩录入</a></li>
 					<li><a href="#">重修成绩录入</a></li> -->
 					

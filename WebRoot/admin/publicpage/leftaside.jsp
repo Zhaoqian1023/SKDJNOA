@@ -14,7 +14,7 @@
 				<ul class="sub">
 				    <li><a href="queryinfo.jsp" id="attendance"
 						class=""> 必修课信息打印 </a></li>
-					<li><a href="Course_byTeacher?page=inScoreSelectOrdinary&years=2018-2019/1">必修课成绩录入</a></li>
+					<li><a href="Course_byTeacher?page=inScoreSelectOrdinary&years=2017-2018/2">必修课成绩录入</a></li>
 					<li><a href="Course_alreadyByTeacher?page=onScoreSelectOrdinary&years=2017-2018/2">必修课成绩单打印</a></li>
 					
 					<!-- <li><a href="attendance.jsp" id="attendance"
@@ -33,7 +33,7 @@
 				<ul class="sub">
 					<li><a href="queryinfo_select.jsp" id="attendance"
 						class=""> 系选修课信息打印 </a></li>
-					<li><a href="PublicCourse_getSelectCourseByTeacher?page=inScoreSelect&tempCategory=select&years=2018-2019/1">系选课成绩录入</a></li>
+					<li><a href="PublicCourse_getSelectCourseByTeacher?page=inScoreSelect&tempCategory=select&years=2017-2018/2">系选课成绩录入</a></li>
 					<li><a href="PublicCourse_alreadyByTeacher?page=onScoreSelect&tempCategory=select&years=2017-2018/2">选修课成绩单打印</a></li>
 					<!-- <li><a href="#">补考成绩录入</a></li>
 					<li><a href="#">重修成绩录入</a></li> -->
@@ -46,7 +46,7 @@
 						公共选修课 </span></a>
 				<ul class="sub">
 					<li><a href="PublicCourse_getCourseName?page=publiccourseatt&tempCategory=public&years=2018-2019/1">考勤单打印</a></li>
-					<li><a href="PublicCourse_getCourseByTeacher?page=inScoreSelectPublic&tempCategory=public&years=2018-2019/1" > 成绩录入 </a></li>
+					<li><a href="PublicCourse_getCourseByTeacher?page=inScoreSelectPublic&tempCategory=public&years=2017-2018/2" > 成绩录入 </a></li>
 					<li><a href="PublicCourse_alreadyByTeacher?page=onScoreSelectPublic&tempCategory=public&years=2017-2018/2">最终成绩单打印</a></li>
 					<li><a href="PublicCourse_alreadyByTeacherAll?page=onScoreSelectPublicAll&tempCategory=public&years=2017-2018/2">最终成绩单批量打印</a></li>
 					

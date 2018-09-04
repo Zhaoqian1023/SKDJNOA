@@ -39,7 +39,7 @@
 		$("#scoreinput").attr("class", "active");
 	}
 </script>
-<script src="js/geo1.js"></script>
+<script src="js/geo2.js"></script>
 </head>
 
 <body onload="active(),setup()">
